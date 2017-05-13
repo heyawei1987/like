@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="firstCtrl">
+    <!--<input type="text" ng-model="name">-->
+    <!--<div ng-repeat="attr in school">
+        {{attr}}
+    </div>-->
+    <div ng-repeat="(key ,value) in school">
+        <!--取出来是对应属性的值，我们可以用结构的方式获取对象的key值，在angular中给对象每一项都配置了一个$index 。ng-repeat会产生一个新的作用域-->
+        {{key}}:{{value}}:{{$index}}
+    </div>
+    <div ng-repeat="apple in apples track by $index">
+        {{apple}}
+    </div>
+    <div ng-repeat="book in books " ng-init="parent=$index">
+        {{book.name}}{{book.price}}
+        <div ng-repeat=" t in book.type">
+            {{$index}}{{t}}
+        </div>
+    </div>
+</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+var app=angular.module('appModule',[]);
+    app.controller('firstCtrl',function($scope){
+        //$scope.name='珠峰培训'/*可以声明如何数据类型*/
+        $s=$scope;
+        $s.school={
+            name:'珠峰培训',
+            address:'回龙观',
+            age:8,
+        };
+        $s.apples=['苹果','苹果','苹果']; /*在遍历相同的数据时，必须通过唯一的key进行遍历，可以使用try by指定唯一的遍历,尽量使用track by属性*/
+        $s.books=[
+            {name:'node',price:30,type:['幽默','简单']},
+            {name:'angular',price:50,type:['幽默','简单']},
+            {name:'vue',price:80,type:['幽默','简单']},
+            {name:'bootstrap',price:40,type:['幽默','简单']},
+        ]
+    });
+    /*在angular中如果带data-xxx和data-ng-xxx效果一样
+    * ng-repeat:当我们从后台获取数据后，我们应该讲数据遍历到对应的模板上.非常像for(key in value)遍历。*/
+</script>
+</html>

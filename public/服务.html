@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="myCtrl">
+<input type="text" ng-model="name">
+<input type="text" ng-model="name">
+</body>
+<script src="../node_modules/angular/angular.js"></script>
+<script>
+   /*
+   * 服务分为五种provider,factory,servers,value,constant,一种装饰decorator
+   * 在服务中只有provider可以配置constant不算一种服务，只是常量
+   *provide是最大的服务 */
+   var app=augular.module('appModule',[]);
+   app.controller('myCtrl',function ($scope) {
+       
+   })
+</script>
+</html>

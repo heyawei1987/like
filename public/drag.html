@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div my-drag>box of drag</div>
+<div my-drag>box of drag</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    angular.module('appModule',[]).directive('myDrag',function(){
+        return {
+            link:function(scope,element,attrs){
+                /*element为JQ对象可以使用on方法*/
+                console.log(element)
+            element.on('mousedown',function(e){
+            /*先获取当前鼠标点击的位置减去盒子边缘距离HTML的边缘距离=当前鼠标距离盒子的边缘*/
+                var desx= e.pageX-this.offsetLeft;
+                var desy= e.pageY-this.offsetTop;
+                angular.element(document).on('mousemove',function(e){
+                    element.css({
+                        left: (e.pageX-desx)+'px',
+                        top:(e.pageY-desy)+'px',
+                        width:'500px',
+                        height:'500px',
+                        background:'blue'
+                    })
+                });
+                angular.element(document).on('mouseup',function(e){
+                    angular.element(document).off()
+                });
+                e.preventDefault();
+            })
+            }
+        }
+    })
+</script>
+</html>

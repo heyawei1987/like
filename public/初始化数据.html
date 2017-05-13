@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-init=" name='[zfpx]'">
+<input type="text" ng-model="name[0]"><!--如果是数组通过索引获取，对象通过name.name-->
+<!--ng-init用来声明属性，将属性声明在当前作用域下，因为只有一个作用域，所以声明在了$rootScope
+声明的类型：数组，数字，字符串，对象。不能声明函数。
+所有带ng开头的都是angular内置指令，在里面写的都是变量
+-->
+</body>
+<script src="node_modules/angular/angular.js"></script>
+</html>

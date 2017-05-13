@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hello></hello><!--元素指令-->
+<div hello></div><!--属性指令-->
+<div class="hello"></div><!--类名指令-->
+<!-- directive:hello --><!--注释指令-->
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    /*
+    * 自定义指令，指令是不依赖于我们的控制器,而是依赖于我们的模块
+    *
+    * */
+    //先创建模块
+    var app=angular.module('appModule',[]);
+    //通过我们的模块创建指令，有两个参数1：指令的名字 2：指令的函数。指令的适用范围Element，attribute,class,comment,
+app.directive('hello',function(){
+    /*默认返回一个对象*/
+    return{
+        template:'<div>hello world</div>',/*默认只有element和attribute生效*/
+        restrict:'ECMA',//限制生效范围，
+        replace:true,//将原指令替换掉，一般情况下，不建议适用class，comment
+    }
+})
+    /*指令分为两种：1组件指令2装饰指令*/
+</script>
+</body>
+</html>

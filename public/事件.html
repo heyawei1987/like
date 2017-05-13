@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .block{
+            display: block;
+        }
+        .none{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="firstCtrl">
+    灯的开关
+    <div ng-click="show()">{{flag?'打开':'隐藏'}}</div>
+    <div class="{{flag?'block':'none'}}">
+        内容
+    </div>
+    <!--<div ng-if="flag">
+        内容
+    </div>-->
+</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    var app=angular.module('appModule',[]);
+    app.controller('firstCtrl',function($scope){
+        $scope.flag=true;
+        $scope.show=function(){
+           $scope.flag=!$scope.flag
+        }
+    })
+    /*ng-click和JavaScript中的onclick用法一样
+    * ng-show ,ng-hide都是简单的操作css样式的，不会产生作用域。
+    * ng-if用来操作DOM是否存在，如果不存在内部指令不在执行，并且如果为FALSE，当前DOM会移除掉。会产生作用域。
+    *ng-if和ng-show,ng-hide的使用：当频繁切换时使用ng-show,ng-hide第一次初始化消耗性能较高，
+    * 当页面一加载就能确定的使用ng-if,当频繁切换时消耗性能较高.
+    * */
+</script>
+</html>

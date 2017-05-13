@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="firstCtrl">
+    <input type="text" ng-model="name">
+</div>
+{{name}}
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    /*ng-app指定启动的名字appModule,告诉angular用appModule来启动angular。
+    * 一切从模块开始引入angular后，会提供一个angular对象.
+    * angular有module这个方法，可以用来创建模块name，requires,configFn
+    * name:模块的属性
+    * requires:模块的依赖，默认无依赖，可以用空数组代替[]。
+    * configFn:配置的函数*/
+    var app=angular.module('appModule',[]);
+    /*通过模块创建控制器
+    * 控制器就是用来控制数据放到哪个模板里，不同的模板可以采用不同的控制器
+    * $().html()取值
+    * $().html(123)设置
+    * 在一个模块下可以声明多个控制器*/
+    app.controller('firstCtrl',function($scope){
+        /*name:控制的名字
+        * fn:回调函数
+        * 此时的viewModule就是我们的$scope，用来将我们的数据和模型进行关联,我们可以将数据挂在$scope上可以进行双向数据绑定，此时已经声明了一个独立的作用域，告诉HTML的使用范围ng-controller='控制器的名字'*/
+        $scope.name='珠峰培训'
+    })
+</script>
+</html>

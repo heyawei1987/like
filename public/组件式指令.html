@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<panel title="这是模板的标题1">这是模板的内容1</panel>
+<!--说明ng-transclude属性会创建一个新的作用域所以会互不干扰，在指令执行的时候看我们的HTML里面是否存有这个指令的名字，多次声明一个名字会把前面的覆盖掉我们想创建一个独立的作用域来解决这个问题。有两种方式可以使用1：scope:true,2scope={}.他们的区别scope:true不会断绝父子关系。scope={}完全断绝关系-->
+<panel title="这是模板的标题2">这是模板的内容2</panel>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+  angular.module('appModule',[]).directive('panel',function(){
+      return{
+          //将原有的内容保存起来，放到我们想放的地方,transclude:true,
+          transclude:true,
+          templateUrl:'panel.html',
+          /*scope:{},*/
+          link:function(scope,element,attrs){
+              console.log(attrs);
+              //在当前作用域下声明一个title属性
+              scope.title=attrs.title
+          }
+      }
+  });
+
+</script>
+</body>
+</html>

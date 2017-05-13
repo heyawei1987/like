@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div zf-web a="123">zfpx</div>
+<div my-drag>box of drag</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    /*在JS中如果出现xx-xxx一定要是有驼峰命名法*/
+    angular.module('appModule',[]).directive('zfWeb',function(){
+        return {
+            template:'<div>zfpx</div>',
+            replace:true,
+            link:function(scope,element,attr){
+                /*在控制器中我们不修改我们的dom元素，我们操作DOM在link函数中，
+                链接函数主要是将我们的视图和作用域连接起来
+                * $scope:代表当前作用域,指令不会创建作用域的
+                * element：代表当前的指令元素element为JQ对象，就是angular.element包装过的，有JQ所有方法
+                *attr:代表的是我们当前指令上的属性。例如a=123
+                * */
+                element.css('border','1px solid red')
+            }
+        }
+    })
+</script>
+</html>

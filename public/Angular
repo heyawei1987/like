@@ -1,0 +1,5 @@
+Angular安装：通过npm或者cmd进行安装$npm install angular或者$bower install angular
+1:Angular核心特点MVVM双向数据绑定(Model-View-ViewModel)Model变化，View也变化.
+2:模板将HTML文件解析到DOM中。
+3：模块化与依赖注入。
+4：指令可以用来创建自定义的标签，也可以用来装饰元素或者操作DOM属性。
